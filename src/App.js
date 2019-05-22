@@ -8,28 +8,22 @@ import Person from './Person/Person';
 class App extends Component {
   state = {
     persons: [
-      { name: 'Max', age: 28},
-      { name: 'Manu', age: 29},
-      { name: 'Stephanie', age: 26}
+      { id: 'asfa1', name: 'Max', age: 28},
+      { id: 'vasdf1', name: 'Manu', age: 29},
+      { id: 'asdf11', name: 'Stephanie', age: 26}
     ],
     otherState: 'Some Other Value',
     showPersons: false
   }
 
-  switchNameHandler = (newName) => {
-    // return(
-    //   console.log('Was clicked')
-    // );
-    // console.log('Was clicked')
-    //Don't Doo THIS this.state.persons[0].name = "Maximise";
-    
-    this.setState({
-      persons: [
-        { name: newName, age: 28},
-        { name: 'Manu', age: 29},
-        { name: 'Stephanie', age: 27}
-      ]
-    })
+
+  deletePersonHandler = (personIndex) => {
+    // const persons = this.state.persons.slice(); similar below
+    const persons = [...this.state.persons];
+    //remove 1 element from personIndex
+    persons.splice(personIndex, 1);
+    //update State
+    this.setState({persons: persons})
   };
 
   nameChangedHandler = (event) => {
@@ -62,20 +56,15 @@ class App extends Component {
     if (this.state.showPersons){
       persons = (
         <div>
-          <Person 
-            name={this.state.persons[0].name} 
-            age={this.state.persons[0].age}/>
-
-          <Person 
-            name={this.state.persons[1].name} 
-            age={this.state.persons[1].age}
-            // click={this.switchNameHandler.bind(this, 'Max!')}
-            changed={this.nameChangedHandler}
-            >My Hobbies: Racing</Person>
-
-          <Person 
-            name={this.state.persons[2].name} 
-            age={this.state.persons[2].age}/>
+          {this.state.persons.map((person, index) => {
+            return (
+              <Person
+              click={() => this.deletePersonHandler(index)} 
+              name={person.name} 
+              age={person.age}
+              key={person.id}/>
+            )
+          })}
         </div>
       );
     }
@@ -166,3 +155,20 @@ export default App;
 //         age={this.state.persons[2].age}/>
 //     </div> : null
 // }
+
+
+// switchNameHandler = (newName) => {
+//   // return(
+//   //   console.log('Was clicked')
+//   // );
+//   // console.log('Was clicked')
+//   //Don't Doo THIS this.state.persons[0].name = "Maximise";
+  
+//   this.setState({
+//     persons: [
+//       { name: newName, age: 28},
+//       { name: 'Manu', age: 29},
+//       { name: 'Stephanie', age: 27}
+//     ]
+//   })
+// };
