@@ -49,14 +49,36 @@ class App extends Component {
 
   render() {
     //inline style
-    // const style = {
-    //   backgroundColor: 'white',
-    //   font: 'inherit',
-    //   border: '1px sold blue',
-    //   padding: '8px',
-    //   cursor: 'pointer'
-    // };
+    const style = {
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px sold blue',
+      padding: '8px',
+      cursor: 'pointer'
+    };
 
+    let persons = null;
+    
+    if (this.state.showPersons){
+      persons = (
+        <div>
+          <Person 
+            name={this.state.persons[0].name} 
+            age={this.state.persons[0].age}/>
+
+          <Person 
+            name={this.state.persons[1].name} 
+            age={this.state.persons[1].age}
+            // click={this.switchNameHandler.bind(this, 'Max!')}
+            changed={this.nameChangedHandler}
+            >My Hobbies: Racing</Person>
+
+          <Person 
+            name={this.state.persons[2].name} 
+            age={this.state.persons[2].age}/>
+        </div>
+      );
+    }
 
     return (
       <div className="App">
@@ -64,32 +86,13 @@ class App extends Component {
         <p>This is Really Working</p> 
         {/* <Person></Person> */}
         <button 
-        /* style = {style} */
+        style = {style}
         className="switchName"
         onClick={this.togglePersonsHandler}
-        >Switch Name</button>
-        { 
-          this.state.showPersons === true ?
-            <div>
-              <Person 
-                name={this.state.persons[0].name} 
-                age={this.state.persons[0].age}/>
-
-              <Person 
-                name={this.state.persons[1].name} 
-                age={this.state.persons[1].age}
-                // click={this.switchNameHandler.bind(this, 'Max!')}
-                changed={this.nameChangedHandler}
-                >My Hobbies: Racing</Person>
-
-              <Person 
-                name={this.state.persons[2].name} 
-                age={this.state.persons[2].age}/>
-            </div> : null
-        }
-      </div>
+        >Toggle Person</button>
+        {persons}
+       </div>
     );
-
     // return React.createElement('div',{className: 'App'}, React.createElement('h1', null, 'Does it work now'));
   }   
 }
@@ -141,4 +144,25 @@ export default App;
 //       My Hobbies: Racing</Person>
 //   </div>
 //   )
+// }
+
+
+// { 
+//   this.state.showPersons === true ?
+//     <div>
+//       <Person 
+//         name={this.state.persons[0].name} 
+//         age={this.state.persons[0].age}/>
+
+//       <Person 
+//         name={this.state.persons[1].name} 
+//         age={this.state.persons[1].age}
+//         // click={this.switchNameHandler.bind(this, 'Max!')}
+//         changed={this.nameChangedHandler}
+//         >My Hobbies: Racing</Person>
+
+//       <Person 
+//         name={this.state.persons[2].name} 
+//         age={this.state.persons[2].age}/>
+//     </div> : null
 // }
