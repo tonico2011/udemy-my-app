@@ -20,8 +20,7 @@ const App = props => {
     setPersonsState({
       persons: [
         { name: 'Henry', age: 24},
-        { name: 'Toni', age: 26},
-        { name: 'Linh', age: 30}
+        { name: 'Toni', age: 26}
       ]
     })
   }
