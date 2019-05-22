@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 // import React, {useState} from 'react';
 import './App.css';
 import Person from './Person/Person';
-import './Person/Person.css';
+
 // import person from './Person/Person';
 
 class App extends Component {
@@ -42,12 +42,25 @@ class App extends Component {
   };
 
   render() {
+    //inline style
+    // const style = {
+    //   backgroundColor: 'white',
+    //   font: 'inherit',
+    //   border: '1px sold blue',
+    //   padding: '8px',
+    //   cursor: 'pointer'
+    // };
+
+
     return (
       <div className="App">
         <h1>Hi, I'm a React App</h1>
         <p>This is Really Working</p> 
         {/* <Person></Person> */}
-        <button onClick={this.switchNameHandler.bind(this, 'Maximilian')}>Switch Name</button>
+        <button 
+        /* style = {style} */
+        className="switchName"
+        onClick={this.switchNameHandler.bind(this, 'Maximilian')}>Switch Name</button>
         <Person 
         name={this.state.persons[0].name} 
         age={this.state.persons[0].age}/>

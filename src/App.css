@@ -1,3 +1,11 @@
 .App {
   text-align: center;
 }
+
+.switchName {
+  background-color: white;
+  font-family: inherit;
+  border: 1px sold blue;
+  padding: 8px;
+  cursor: pointer;
+}
