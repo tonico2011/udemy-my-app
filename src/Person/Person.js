@@ -9,10 +9,15 @@ import './Person.css';
 // }
 //props or any other name
 function person(props) {
+    const style = {
+        '@media (min-width: 500px)': {
+            width: '450px'
+        }
+    };
     return (
         // <p>I'm a Person and I am Math.floor(Math.random() * 30) years old!</p>
         // <p>I'm a Person and I am {Math.floor(Math.random() * 30)} years old!</p>
-       <div className="Person">
+       <div className="Person" style={style}>
             <p onClick = {props.click}>I'm {props.name} and I am {props.age} years old! {props.children}</p>
             {/* <p>{props.children}</p> */}
             <input 

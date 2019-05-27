@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 // import React, {useState} from 'react';
 import './App.css';
-import Radium from 'radium';
+import Radium, {StyleRoot} from 'radium';
 import Person from './Person/Person';
 
 
@@ -100,17 +100,20 @@ class App extends Component {
       classes.push('bold'); //clasess = ['bold']
     }
     return (
-      <div className="App">
-        <h1>Hi, I'm a React App</h1>
-        <p className={classes.join(' ')}>This is Really Working</p> 
-        {/* <Person></Person> */}
-        <button 
-        style = {style}
-        className="switchName"
-        onClick={this.togglePersonsHandler}
-        >Toggle Person</button>
-        {persons}
+      <StyleRoot>
+        <div className="App">
+          <h1>Hi, I'm a React App</h1>
+          <p className={classes.join(' ')}>This is Really Working</p> 
+          {/* <Person></Person> */}
+          <button 
+          style = {style}
+          className="switchName"
+          onClick={this.togglePersonsHandler}
+          >Toggle Person</button>
+          {persons}
        </div>
+      </StyleRoot>
+
     );
     // return React.createElement('div',{className: 'App'}, React.createElement('h1', null, 'Does it work now'));
   }   
