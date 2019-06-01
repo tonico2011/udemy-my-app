@@ -4,18 +4,17 @@ import Person from './Person/Person';
 //     return();
 // }
 
-const persons = (props) => (
-    //JSX code going here
-    props.persons.map((person, index) => {
+const persons = (props) => props.persons.map((person, index) => {
         return (
           // <ErrorBoundary key={person.id}>
             <Person
-              click={() => props.deletePersonHandler(index)} 
+              click={() => props.clicked(index)} 
               name={person.name} 
               age={person.age}
               key={person.id}
-              changed={(event) => props.nameChangedHandler(event, person.id)}/>
+              changed={(event) => props.changed(event, person.id)}/>
           // </ErrorBoundary>
         )
       }
 );
+export default persons;

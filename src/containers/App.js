@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 // import React, {useState} from 'react';
 import classes from  './App.css';
 import Person from '../components/Persons/Person/Person';
+import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit'
 // import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 
 // import person from './Person/Person';
@@ -68,11 +70,16 @@ class App extends Component {
     // };
 
     let persons = null;
-    let btnClass ='';
+    // let btnClass ='';
     if (this.state.showPersons){
       persons = (
         <div>
-          {this.state.persons.map((person, index) => {
+          <Persons 
+            persons={this.state.persons}
+            clicked={this.deletePersonHandler}
+            changed={this.nameChangedHandler}
+          />
+          {/* {this.state.persons.map((person, index) => {
             return (
               // <ErrorBoundary key={person.id}>
                 <Person
@@ -83,30 +90,28 @@ class App extends Component {
                   changed={(event) => this.nameChangedHandler(event, person.id)}/>
               // </ErrorBoundary>
             )
-          })}
+          })} */}
         </div>
       );
-          btnClass = classes.Red;
+          // btnClass = classes.Red;
     }
 
     // let classes = ['red', 'bold'].join(' ');
-    const assignedClasses = [];
-    if (this.state.persons.length <= 2) {
-      assignedClasses.push(classes.red); //clasess = ['red']
-    }
-    if (this.state.persons.length <= 1) {
-      assignedClasses.push(classes.bold); //clasess = ['bold']
-    }
+    // const assignedClasses = [];
+    // if (this.state.persons.length <= 2) {
+    //   assignedClasses.push(classes.red); //clasess = ['red']
+    // }
+    // if (this.state.persons.length <= 1) {
+    //   assignedClasses.push(classes.bold); //clasess = ['bold']
+    // }
+
     return (
-        <div className={classes.App}>
-          <h1>Hi, I'm a React App</h1>
-          <p className={assignedClasses.join(' ')}>This is Really Working</p> 
-          {/* <Person></Person> */}
-          <button 
-          className={btnClass}
-          onClick={this.togglePersonsHandler}
-          >Toggle Person</button>
-          {persons}
+         <div className={classes.App}>
+           <Cockpit
+              showPersons={this.state.showPersons}
+              persons={this.state.persons} 
+              toggled={this.togglePersonsHandler}/>
+         {persons}
        </div>
       
 
