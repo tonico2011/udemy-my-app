@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 // import React, {useState} from 'react';
 import classes from  './App.css';
-import Person from './Person/Person';
+import Person from './Persons/Person/Person';
 // import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 
 // import person from './Person/Person';
@@ -103,7 +103,6 @@ class App extends Component {
           <p className={assignedClasses.join(' ')}>This is Really Working</p> 
           {/* <Person></Person> */}
           <button 
-          
           className={btnClass}
           onClick={this.togglePersonsHandler}
           >Toggle Person</button>
