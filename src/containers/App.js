@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 // import React, {useState} from 'react';
 import classes from  './App.css';
-import Person from './Persons/Person/Person';
+import Person from '../components/Persons/Person/Person';
 // import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 
 // import person from './Person/Person';
