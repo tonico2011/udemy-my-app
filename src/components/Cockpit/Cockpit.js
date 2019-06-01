@@ -4,6 +4,7 @@ const cockpit = (props) => {
     let btnClass ='';
     btnClass = classes.Red;
     const assignedClasses = [];
+    
     if (props.showPersons) {
         btnClass = classes.red;
     }
@@ -16,14 +17,12 @@ const cockpit = (props) => {
 
     return (
         <div className={classes.Cockpit}>
-          <h1>Hi, I'm a React App</h1>
-          <p className={assignedClasses.join(' ')}>This is Really Working</p> 
-          {/* <Person></Person> */}
-          <button 
-          className={btnClass}
-          onClick={props.toggled}
-          >Toggle Person</button>
-          {/* {persons} */}
+            <h1>Hi, I'm a React App</h1>
+            <p className={assignedClasses.join(' ')}>This is Really Working</p> 
+            <button 
+            className={btnClass}
+            onClick={props.toggled}
+            >Toggle Person</button>
         </div>
     );
 };

@@ -4,9 +4,6 @@ import classes from  './App.css';
 import Person from '../components/Persons/Person/Person';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit'
-// import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
-
-// import person from './Person/Person';
 
 class App extends Component {
   state = {
@@ -18,7 +15,6 @@ class App extends Component {
     otherState: 'Some Other Value',
     showPersons: false
   }
-
 
   deletePersonHandler = (personIndex) => {
     // const persons = this.state.persons.slice(); similar below
@@ -38,15 +34,12 @@ class App extends Component {
       ...this.state.persons[personIndex]
     };
 
-   // const person = Object.assign({}, this.state.persons[personIndex]);
-
-   person.name = event.target.value;
+  person.name = event.target.value;
 
   const persons = [...this.state.persons];
   persons[personIndex] = person;
     this.setState({persons: persons})
   };
-
 
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
@@ -54,20 +47,6 @@ class App extends Component {
   }
 
   render() {
-    
-    //inline style
-    // const style = {
-    //   backgroundColor: 'green',
-    //   color: 'white',
-    //   font: 'inherit',
-    //   border: '1px sold blue',
-    //   padding: '8px',
-    //   cursor: 'pointer',
-    //   ':hover': {
-    //     backgroundColor: 'lightGreen',
-    //     color: 'black'
-    //   }
-    // };
 
     let persons = null;
     // let btnClass ='';
@@ -79,31 +58,9 @@ class App extends Component {
             clicked={this.deletePersonHandler}
             changed={this.nameChangedHandler}
           />
-          {/* {this.state.persons.map((person, index) => {
-            return (
-              // <ErrorBoundary key={person.id}>
-                <Person
-                  click={() => this.deletePersonHandler(index)} 
-                  name={person.name} 
-                  age={person.age}
-                  key={person.id}
-                  changed={(event) => this.nameChangedHandler(event, person.id)}/>
-              // </ErrorBoundary>
-            )
-          })} */}
         </div>
       );
-          // btnClass = classes.Red;
     }
-
-    // let classes = ['red', 'bold'].join(' ');
-    // const assignedClasses = [];
-    // if (this.state.persons.length <= 2) {
-    //   assignedClasses.push(classes.red); //clasess = ['red']
-    // }
-    // if (this.state.persons.length <= 1) {
-    //   assignedClasses.push(classes.bold); //clasess = ['bold']
-    // }
 
     return (
          <div className={classes.App}>
@@ -206,3 +163,24 @@ export default App;
 //     ]
 //   })
 // };
+
+    
+    //inline style
+    // const style = {
+    //   backgroundColor: 'green',
+    //   color: 'white',
+    //   font: 'inherit',
+    //   border: '1px sold blue',
+    //   padding: '8px',
+    //   cursor: 'pointer',
+    //   ':hover': {
+    //     backgroundColor: 'lightGreen',
+    //     color: 'black'
+    //   }
+    // };
+
+    // import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
+
+// import person from './Person/Person';
+
+   // const person = Object.assign({}, this.state.persons[personIndex]);
