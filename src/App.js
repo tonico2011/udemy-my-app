@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 // import React, {useState} from 'react';
-import './App.css';
+import classes from  './App.css';
 import Person from './Person/Person';
-
+// import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 
 // import person from './Person/Person';
 
@@ -52,55 +52,59 @@ class App extends Component {
   }
 
   render() {
+    
     //inline style
-    const style = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px sold blue',
-      padding: '8px',
-      cursor: 'pointer',
-      ':hover': {
-        backgroundColor: 'lightGreen',
-        color: 'black'
-      }
-    };
+    // const style = {
+    //   backgroundColor: 'green',
+    //   color: 'white',
+    //   font: 'inherit',
+    //   border: '1px sold blue',
+    //   padding: '8px',
+    //   cursor: 'pointer',
+    //   ':hover': {
+    //     backgroundColor: 'lightGreen',
+    //     color: 'black'
+    //   }
+    // };
 
     let persons = null;
-    
+    let btnClass ='';
     if (this.state.showPersons){
       persons = (
         <div>
           {this.state.persons.map((person, index) => {
             return (
-              <Person
-              click={() => this.deletePersonHandler(index)} 
-              name={person.name} 
-              age={person.age}
-              key={person.id}
-              changed={(event) => this.nameChangedHandler(event, person.id)}/>
+              // <ErrorBoundary key={person.id}>
+                <Person
+                  click={() => this.deletePersonHandler(index)} 
+                  name={person.name} 
+                  age={person.age}
+                  key={person.id}
+                  changed={(event) => this.nameChangedHandler(event, person.id)}/>
+              // </ErrorBoundary>
             )
           })}
         </div>
       );
+          btnClass = classes.Red;
     }
 
     // let classes = ['red', 'bold'].join(' ');
-    let classes = [];
+    const assignedClasses = [];
     if (this.state.persons.length <= 2) {
-      classes.push('red'); //clasess = ['red']
+      assignedClasses.push(classes.red); //clasess = ['red']
     }
     if (this.state.persons.length <= 1) {
-      classes.push('bold'); //clasess = ['bold']
+      assignedClasses.push(classes.bold); //clasess = ['bold']
     }
     return (
-        <div className="App">
+        <div className={classes.App}>
           <h1>Hi, I'm a React App</h1>
-          <p className={classes.join(' ')}>This is Really Working</p> 
+          <p className={assignedClasses.join(' ')}>This is Really Working</p> 
           {/* <Person></Person> */}
           <button 
-          style = {style}
-          className="switchName"
+          
+          className={btnClass}
           onClick={this.togglePersonsHandler}
           >Toggle Person</button>
           {persons}
